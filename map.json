@@ -2705,6 +2705,11 @@
                  "point":true,
                  "properties":[
                         {
+                         "name":"closeLayer",
+                         "type":"string",
+                         "value":"closed_door"
+                        }, 
+                        {
                          "name":"default",
                          "type":"bool",
                          "value":false
@@ -2733,8 +2738,8 @@
                  "type":"variable",
                  "visible":true,
                  "width":0,
-                 "x":2001,
-                 "y":2427
+                 "x":2035,
+                 "y":2415
                 }],
          "opacity":1,
          "properties":[
