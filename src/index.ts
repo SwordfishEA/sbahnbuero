@@ -18,6 +18,19 @@ WA.onInit().then(() => {
 
     WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
 
+    
+    // Voting zones
+    WA.room.onEnterLayer('votepositive').subscribe(() => (WA.state.votevarPositive as number) ++);
+    WA.room.onLeaveLayer('votepositive').subscribe(() => (WA.state.votevarPositive as number) --);
+
+    WA.room.onEnterLayer('votenegative').subscribe(() => (WA.state.votevarNegative as number) ++);
+    WA.room.onLeaveLayer('votenegative').subscribe(() => (WA.state.votevarNegative as number) --);
+
+    WA.room.onEnterLayer('voteneutral').subscribe(() => (WA.state.votevarNeutral as number) ++);
+    WA.room.onLeaveLayer('voteneutral').subscribe(() => (WA.state.votevarNeutral as number) --);
+
+ 
+
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
     bootstrapExtra().then(() => {
         console.log('Scripting API Extra ready');
