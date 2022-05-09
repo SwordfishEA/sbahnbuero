@@ -1,5 +1,6 @@
 /// <reference path="../node_modules/@workadventure/iframe-api-typings/iframe_api.d.ts" />
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+import { ButtonDescriptor } from "@workadventure/iframe-api-typings/Api/iframe/Ui/ButtonDescriptor";
 
 console.log('Script started successfully');
 
@@ -18,6 +19,18 @@ WA.onInit().then(() => {
 
     WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
 
+    const  buttons: ButtonDescriptor[] = [
+        {
+            label: 'Reset',
+            className: 'error',
+            callback: () => WA.state.votevarPositive = WA.state.votevarNegative = WA.state.votevarNeutral = 0,
+        },
+    ]
+
+    WA.room.onEnterLayer('resetVote').subscribe(() => {
+        currentPopup = WA.ui.openPopup("resetPopup","Do you want to reset the poll?", buttons);
+    })
+    WA.room.onLeaveLayer('resetVote').subscribe(closePopUp)
     
     // Voting zones
     WA.room.onEnterLayer('votepositive').subscribe(() => (WA.state.votevarPositive as number) ++);
