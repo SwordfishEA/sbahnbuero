@@ -43,6 +43,14 @@ WA.onInit().then(() => {
     WA.room.onLeaveLayer('voteneutral').subscribe(() => (WA.state.votevarNeutral as number) --);
 
  
+    //show Tempel
+    WA.room.onEnterLayer('showtempel').subscribe(() => {
+        WA.room.showLayer("tempel")
+    })
+
+    WA.room.onLeaveLayer('showtempel').subscribe(() => {
+        WA.room.hideLayer("tempel")
+    })
 
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
     bootstrapExtra().then(() => {
